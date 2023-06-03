@@ -10,10 +10,13 @@ const routes=require('./routes/user')
 const router=require('./routes/expense')
 const purchaseRoutes=require('./routes/purchase')
 const premiumRoutes=require('./routes/premiumFeartures')
+const forgotPasswordRoutes=require('./routes/forgotpasswordroutes')
 
 const User = require('./models/expenseCalculatorModels')
 const ExpenseDetails=require('./models/expenseModels')
 const order=require('./models/orders')
+const Forgotpassword=require('./models/forgetpassword')
+const fileUrl=require('./models/fileUrl')
 const app = express()
 app.use(cors())
 
@@ -23,6 +26,7 @@ app.use(routes)
 app.use(router)
 app.use(purchaseRoutes)
 app.use(premiumRoutes)
+app.use(forgotPasswordRoutes)
 
 
 
@@ -33,9 +37,13 @@ ExpenseDetails.belongsTo(User)
 User.hasMany(order)
 order.belongsTo(User)
 
+User.hasMany(Forgotpassword);
+Forgotpassword.belongsTo(User);
+User.hasMany(fileUrl)
+fileUrl.belongsTo(User)
 
 
 
-//user Login End
+
 sequelize.sync(  /* {force:true}   */ )
 app.listen(3000)
