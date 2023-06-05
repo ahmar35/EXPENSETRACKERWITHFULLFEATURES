@@ -30,9 +30,36 @@ exports.getdownloadExpenseInfo=async(req,res,next)=>{
         console.log(err)
     }
 }
-   
 
 
+
+
+exports.getExpenses = async (req, res, next) => {
+    try {
+      const ITEMS_PER_PAGE = parseInt(req.params.currentExpensesPerRow, 10) || 10;
+  
+      const page = req.params.page || 1; // Get the page number from the request parameters
+      const offset = (page - 1) * ITEMS_PER_PAGE;
+  
+      const expenses = await ExpenseDetails.findAll({
+        where: { USERId: req.user.id },
+        offset,
+        limit: ITEMS_PER_PAGE,
+      });
+  
+      // Count total expenses for pagination
+      const totalCount = await ExpenseDetails.count({ where: { USERId: req.user.id } });
+  
+      const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
+  
+      res.status(200).json({ expenses, totalCount, totalPages, currentPage: page });
+    } catch (err) {
+        console.log(err)
+      res.status(500).json({ success: false, error: err });
+    }
+  };
+  
+  
 
 
 exports.postExpenseDetails=async(req,res,next)=>{
@@ -64,10 +91,12 @@ exports.postExpenseDetails=async(req,res,next)=>{
    
 }
 
-exports.getExpenseDetails=async(req,res,next)=>{
+/* exports.getExpenseDetails=async(req,res,next)=>{
     const info=await ExpenseDetails.findAll({where:{USERId:req.user.id}})
     res.status(200).json(info)
-}
+
+    
+} */
 
 exports.deleteExpenseInfo=async(req,res,next)=>{
     const t=await Sequelize.transaction()
