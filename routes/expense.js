@@ -9,4 +9,5 @@ routers.post('/ExpenseForm/',auth.authenticate,controllers.postExpenseDetails)
 routers.get('/ExpenseDetails',auth.authenticate,controllers.getExpenseDetails)
 routers.get('/user/download',auth.authenticate,controllers.getdownloadExpenseInfo)
 routers.delete('/DeleteInfo/:id',auth.authenticate,controllers.deleteExpenseInfo)
+routers.get('/expenses/page/:page/:currentExpensesPerRow',auth.authenticate,controllers.getExpenses)
 module.exports=routers

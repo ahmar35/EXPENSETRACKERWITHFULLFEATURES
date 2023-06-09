@@ -13,7 +13,7 @@ require('dotenv').config()
 
 exports.forgotPassword=async(req,res,next)=>{
     const user=await User.findOne({where:{Email:req.body.Email}})
-    apiKey.apiKey=process.env.API_KEY
+    apiKey.apiKey=process.env.SENDGRID_API_KEY
 
     
     const tranEmailApi= new Sib.TransactionalEmailsApi()
