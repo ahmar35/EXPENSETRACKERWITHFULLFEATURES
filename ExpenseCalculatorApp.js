@@ -37,9 +37,6 @@ app.use(purchaseRoutes)
 app.use(premiumRoutes)
 app.use(forgotPasswordRoutes)
 
-app.use((req,res)=>{
-    res.sendFile(path.join(__dirname,`${req.url}`))
-})
 
 
 
