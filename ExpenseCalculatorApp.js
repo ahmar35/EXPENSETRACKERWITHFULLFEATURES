@@ -30,16 +30,15 @@ app.use(morgan('combined',{stream:accessLogStream}))
 
 app.use(cors())
 app.use(bodyParser.json())
-
+app.use((req,res)=>{
+    res.sendFile(path.join(__dirname,`${req.url}`))
+})
 app.use(routes)
 app.use(router)
 app.use(purchaseRoutes)
 app.use(premiumRoutes)
 app.use(forgotPasswordRoutes)
 
-app.use((req,res)=>{
-    res.sendFile(path.join(__dirname,`${req.url}`))
-})
 
 
 
