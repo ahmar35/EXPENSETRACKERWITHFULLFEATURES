@@ -22,7 +22,6 @@ const order=require('./models/orders')
 const Forgotpassword=require('./models/forgetpassword')
 const fileUrl=require('./models/fileUrl')
 const accessLogStream=fs.createWriteStream(path.join(__dirname, 'access.log'),{flags:'a'})
-const MONGODB_URI='mongodb+srv://muhammadahmar35:Rahil123@cluster0.f2biikh.mongodb.net/ '
 const app = express()
 app.use(helmet())
 app.use(morgan('combined',{stream:accessLogStream}))
