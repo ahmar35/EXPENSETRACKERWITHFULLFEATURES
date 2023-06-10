@@ -51,7 +51,7 @@
 
             const token = localStorage.getItem("token");
             axios
-                .post("http://localhost:3000/ExpenseForm", expenseDetails, {
+                .post("http://13.48.192.65:3000/ExpenseForm", expenseDetails, {
                     headers: {
                         Authorization: token
                     }
@@ -110,7 +110,7 @@
             
             const token = localStorage.getItem("token");
             axios
-                .get(`http://localhost:3000/expenses/page/${currentPage}/${currentExpensesPerRow}`, {
+                .get(`http://13.48.192.65:3000/expenses/page/${currentPage}/${currentExpensesPerRow}`, {
                     headers: {
                         Authorization: token
                     }
@@ -161,7 +161,7 @@
             const token = localStorage.getItem("token");
 
             axios
-                .get("http://localhost:3000/user/download", {
+                .get("http://13.48.192.65:3000/user/download", {
                     headers: {
                         Authorization: token
                     }
@@ -187,7 +187,7 @@
 
                 const token = localStorage.getItem("token");
                 const UserLeaderBoardArray = await axios.get(
-                    "http://localhost:3000/premium/showLeaderBoard",
+                    "http://13.48.192.65:3000/premium/showLeaderBoard",
                     {
                         headers: {
                             Authorization: token
@@ -208,7 +208,7 @@
         function deleteInfo(id) {
             const token = localStorage.getItem("token");
             axios
-                .delete(`http://localhost:3000/DeleteInfo/${id}`, {
+                .delete(`http://13.48.192.65:3000/DeleteInfo/${id}`, {
                     headers: {
                         Authorization: token
                     }
@@ -285,7 +285,7 @@
 
             const token = localStorage.getItem("token");
             axios
-                .get(`http://localhost:3000/expenses/page/${page}/${currentExpensesPerRow}`, {
+                .get(`http://13.48.192.65:3000/expenses/page/${page}/${currentExpensesPerRow}`, {
                     headers: {
                         Authorization: token
                     }
@@ -309,18 +309,18 @@
             document.getElementById('rzp-button1').onclick=async function(e){
 
                 const token=localStorage.getItem('token')
-                const response=await axios.get('http://localhost:3000/purchase/premiumMembership',{
+                const response=await axios.get('http://13.48.192.65:3000/purchase/premiumMembership',{
                     headers: {"Authorization": token}
 
                 })
 
                 var options={
-                "key": response.data.key_id, // Enter the Key ID generated from the Dashboar "order_id": response.data.order.id, // For one time payment // This handler function will handle the success payment "handler": async function (response) [ await axios.post('http://localhost:3000/purchase/updatetransactionstatus
+                "key": response.data.key_id, // Enter the Key ID generated from the Dashboar "order_id": response.data.order.id, // For one time payment // This handler function will handle the success payment "handler": async function (response) [ await axios.post('http://13.48.192.65:3000/purchase/updatetransactionstatus
                 'order_id':response.data.order.id,
                 'handler': async function(response){
                     console.log(response)
 
-                    await axios.post('http://localhost:3000/purchase/updateTransactionStatus',{
+                    await axios.post('http://13.48.192.65:3000/purchase/updateTransactionStatus',{
 
 
                     order_id: options.order_id, 
