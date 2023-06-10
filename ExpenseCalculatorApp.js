@@ -23,18 +23,23 @@ const Forgotpassword=require('./models/forgetpassword')
 const fileUrl=require('./models/fileUrl')
 const accessLogStream=fs.createWriteStream(path.join(__dirname, 'access.log'),{flags:'a'})
 const app = express()
+app.use(cors())
+
 app.use(helmet())
 app.use(morgan('combined',{stream:accessLogStream}))
 
 
-app.use(cors())
 app.use(bodyParser.json())
 app.use(routes)
 app.use(router)
 app.use(purchaseRoutes)
 app.use(premiumRoutes)
 app.use(forgotPasswordRoutes)
+app.use((req,res)=>{
+    
 
+    res.sendFile(path.join(__dirname,`${req.url}`))
+})
 
 
 
