@@ -7,8 +7,7 @@ require('dotenv').config()
 
 const sequelize = require('./UTIL/database')
 const bcrypt=require('bcrypt')
-const helmet=require('helmet')
-const morgan=require('morgan')
+
 const jwt=require('jsonwebtoken')
 const routes=require('./routes/user')
 const router=require('./routes/expense')

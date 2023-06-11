@@ -41,7 +41,7 @@ exports.forgotPassword=async(req,res,next)=>{
         textContent:`
         hii test compleeted
         `,
-        htmlContent:`<a href='http://13.48.192.65:3000/password/resetpassword/${id}'>visit</a>`,
+        htmlContent:`<a href='http://13.48.3.20:3000/password/resetpassword/${id}'>visit</a>`,
     }).then((response)=>{
         return res.status(201).json({message:'successfully sent'})
     })
