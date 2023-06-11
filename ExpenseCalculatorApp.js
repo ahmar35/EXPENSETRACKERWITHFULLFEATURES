@@ -29,17 +29,21 @@ app.use(cors())
 
 app.use(bodyParser.json())
 
+
+
+app.use(bodyParser.json())
+
 app.use(routes)
 app.use(router)
 app.use(purchaseRoutes)
 app.use(premiumRoutes)
 app.use(forgotPasswordRoutes)
+    
 
 app.use((req,res)=>{
-    console.log(req.url)
-
     res.sendFile(path.join(__dirname,`${req.url}`))
 })
+
 
 User.hasMany(ExpenseDetails)
 ExpenseDetails.belongsTo(User)
