@@ -60,8 +60,8 @@
         ENTER YOUR EMAIL:<input type="text" id="email" required />
         PASSWORD:<input type="password" id="password" required />
         <button class="block" ;type="Submit">LOG IN</button>
-        <a href="D:\ExpenseTrackerApp\ExpenseCalculatorApp.html">New User--Create an Account</a>
-        <a href="D:\ExpenseTrackerApp\ForgotPassword\forgetPassword.html">Forgot Password?</a>
+        <a href="/ExpenseCalculatorApp.html">New User--Create an Account</a>
+        <a href="/ForgotPassword/forgetPassword.html">Forgot Password?</a>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
@@ -74,7 +74,7 @@
                 EMAIL,
                 PASSWORD   
             }
-            await axios.post("http://13.48.3.20:3000/User/LogIn",UserInfo)
+            await axios.post("http://13.51.5.52:3000/User/LogIn",UserInfo)
                 .then((res)=>{
 
                     if(res.status===201){
