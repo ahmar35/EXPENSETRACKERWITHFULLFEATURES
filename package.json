@@ -1,5 +1,5 @@
 {
-    "name": "nodemon" ,
+    "name": "nodemon",
     "version": "1.0.0",
     "description": "\"node js guide\"",
     "main": "ExpenseCalculatorApp.js",
